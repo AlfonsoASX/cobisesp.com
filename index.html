@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MSTV Seguridad Privada | Protección Integral</title>
+  <meta name="description" content="Seguridad privada integral: guardias, monitoreo y protocolos operativos. León, Gto. MSTV Seguridad Privada." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Colores tomados del escudo: dorado, negro, blanco + acentos bandera */
+      --gold:#c9a227; --gold-dark:#8a6b00; --gold-light:#e7c765;
+      --black:#0b0b0b; --ink:#1a1a1a; --white:#ffffff;
+      --mx-green:#00843d; --mx-red:#ce1126;
+      --muted:#f5f5f7;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--black);color:var(--white);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* NAV */
+    .nav{
+      position:sticky;top:0;z-index:1000;
+      backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(0deg,rgba(11,11,11,.6),rgba(11,11,11,.6));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav .wrap{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:.8rem;padding:.6rem .9rem}
+    .brand{display:flex;align-items:center;gap:.7rem;font-weight:800;letter-spacing:.5px}
+    .brand img{width:40px;height:40px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+    .brand span{font-size:1rem}
+    .pill{
+      margin-left:auto;display:flex;gap:.35rem;flex-wrap:wrap
+    }
+    .pill a{
+      padding:.55rem .8rem;border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.9rem;opacity:.9
+    }
+    .cta{
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:#221a00;border:none!important;font-weight:700;opacity:1
+    }
+
+    /* SECTIONS */
+    section{position:relative}
+    .wrap{max-width:1200px;margin:0 auto;padding:64px 18px}
+    .grid{display:grid;gap:22px}
+    @media(min-width:900px){ .grid-2{grid-template-columns:1.1fr .9fr} }
+
+    h1,h2,h3{margin:0 0 14px}
+    h1{font-size:clamp(32px,6vw,56px);line-height:1.05;letter-spacing:.3px}
+    h2{font-size:clamp(24px,4.2vw,36px)}
+    p{margin:0 0 12px;color:#eaeaea;line-height:1.6}
+
+    /* PARALLAX blocks */
+    .parallax{
+      min-height:72vh;display:grid;place-items:center;text-align:center;
+      background-position:center;background-size:cover;overflow:hidden
+    }
+    .overlay{
+      position:absolute;inset:0;
+      background:radial-gradient(ellipse at center,rgba(0,0,0,.25),rgba(0,0,0,.75));
+    }
+    .hero{
+      background-image:url('https://images.unsplash.com/photo-1556484687-30636164638b?q=80&w=1600&auto=format&fit=crop');
+    }
+    .hero .content{position:relative;z-index:2;padding:0 18px}
+    .badge{
+      display:inline-flex;gap:6px;align-items:center;border-radius:999px;
+      padding:.35rem .7rem;border:1px solid rgba(255,255,255,.18);font-size:.82rem;opacity:.9
+    }
+    .mxflag{height:10px;width:26px;background:
+      linear-gradient(90deg,var(--mx-green) 0 33%,#fff 33% 66%,var(--mx-red) 66% 100%);
+      border:1px solid rgba(255,255,255,.5);box-shadow:0 0 0 1px rgba(0,0,0,.2) inset
+    }
+    .btn{
+      display:inline-block;margin-top:16px;padding:12px 18px;border-radius:14px;
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:#221a00;font-weight:800;border:none;box-shadow:0 8px 24px rgba(201,162,39,.25)
+    }
+
+    .panel{
+      background:#101010;border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;padding:18px
+    }
+    .accent{color:var(--gold-light)}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold) 40% 60%,transparent);opacity:.35;margin:22px 0}
+
+    /* SERVICE CARDS */
+    .cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+    .card{
+      background:linear-gradient(180deg,#141414,#0d0d0d);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;padding:18px;min-height:160px;position:relative;overflow:hidden
+    }
+    .card:after{
+      content:"";position:absolute;inset:auto -20% -30% -20%;height:60%;
+      background:radial-gradient(ellipse at top,var(--gold) 0,transparent 55%);
+      opacity:.15;pointer-events:none
+    }
+    .card h3{font-size:1.05rem;margin-bottom:6px}
+    .chip{display:inline-block;font-size:.75rem;opacity:.84;border:1px solid rgba(255,255,255,.18);padding:.18rem .5rem;border-radius:999px}
+
+    /* STRIP */
+    .strip{
+      background:linear-gradient(90deg,var(--mx-green),#1b1b1b 40%,#1b1b1b 60%,var(--mx-red));
+      color:#fff;text-align:center
+    }
+    .strip .wrap{padding:12px 18px}
+    .strip b{color:var(--gold-light)}
+
+    /* PARALLAX 2 */
+    .parallax.sec{
+      background-image:url('https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?q=80&w=1600&auto=format&fit=crop')
+    }
+
+    /* CONTACT */
+    form{display:grid;gap:10px}
+    input,textarea{
+      width:100%;padding:12px;border-radius:12px;background:#0f0f0f;color:#fff;
+      border:1px solid rgba(255,255,255,.14);outline:none
+    }
+    textarea{min-height:120px;resize:vertical}
+    .submit{
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:#221a00;border:none;padding:12px 16px;border-radius:14px;font-weight:800;cursor:pointer
+    }
+
+    /* FOOTER */
+    footer{background:#0a0a0a;border-top:1px solid rgba(255,255,255,.08)}
+    .footer-grid{display:grid;gap:16px}
+    @media(min-width:900px){ .footer-grid{grid-template-columns:1fr 1fr} }
+
+    /* Parallax effect (transform-based for mobile) */
+    [data-parallax] {will-change:transform}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap">
+      <a href="#inicio" class="brand">
+        <img src="assets/logonuevo.png" alt="MSTV Logo" />
+        <span>MSTV Seguridad Privada</span>
+      </a>
+      <div class="pill">
+        <a href="#servicios">Servicios</a>
+        <a href="#diferencial">Diferencial</a>
+        <a href="#empresa">La Empresa</a>
+        <a href="#contacto" class="cta">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="inicio" class="parallax hero" data-parallax data-speed="0.35">
+    <div class="overlay" aria-hidden="true"></div>
+    <div class="content">
+      <div class="badge"><span class="mxflag" aria-hidden="true"></span> Seguridad privada 100% mexicana</div>
+      <h1>Protección <span class="accent">integral</span> que se nota<br>cuando todo sigue en orden</h1>
+      <p>Guardias, protocolos y supervisión con criterio operativo y capacitación continua.</p>
+      <a class="btn" href="#contacto">Solicitar evaluación sin costo</a>
+    </div>
+  </header>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="wrap">
+      <small>Atención en León y Bajío • <b>Aquiles Serdán 220, Centro, 37000 León, Gto.</b> • Tel. 476 127 3832 · 55 4598 6766 · 477 720 7007</small>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap grid grid-2">
+      <div class="panel">
+        <h2>Servicios</h2>
+        <p>Diseñamos un plan de protección y consignas de acuerdo a tu operación. Cobertura intramuros para personas y organizaciones.</p>
+        <div class="divider"></div>
+        <div class="cards">
+          <article class="card">
+            <h3>Vigilancia en inmuebles</h3>
+            <p>Centros comerciales, fraccionamientos, unidades habitacionales, industrias y oficinas.</p>
+            <span class="chip">Intramuros</span>
+          </article>
+          <article class="card">
+            <h3>Control de accesos</h3>
+            <p>Protocolos, bitácoras, rondines, filtros y verificación de proveedores.</p>
+            <span class="chip">Operación</span>
+          </article>
+          <article class="card">
+            <h3>Seguridad industrial y comercial</h3>
+            <p>Análisis de riesgos, consignas por turno y coordinación con protección civil.</p>
+            <span class="chip">Prevención</span>
+          </article>
+          <article class="card">
+            <h3>Monitoreo y reacción</h3>
+            <p>Comunicación, reporteo y criterio operativo para respuesta efectiva.</p>
+            <span class="chip">Supervisión</span>
+          </article>
+          <article class="card">
+            <h3>Seguridad residencial</h3>
+            <p>Protocolos para fraccionamientos y condominios, atención a visitantes y paquetería.</p>
+            <span class="chip">Residencial</span>
+          </article>
+          <article class="card">
+            <h3>Personal capacitado</h3>
+            <p>Selección rigurosa y adiestramiento continuo en servicio, PC y desarrollo humano.</p>
+            <span class="chip">Capital humano</span>
+          </article>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Capacitación &amp; Selección</h2>
+        <p>Proceso estricto con perfiles físico, psicométrico, toxicológico y médico. Bloques formativos: Desarrollo Humano, Protección Civil, Servicio Operativo y Acondicionamiento Físico.</p>
+        <div class="divider"></div>
+        <h3>Capacidad legal y comercial</h3>
+        <ul>
+          <li>Permisos municipal y estatal para prestar servicios de seguridad privada.</li>
+          <li>RFC y cumplimiento fiscal; registro patronal IMSS.</li>
+          <li>Estructura organizacional, oficinas y equipo operativo.</li>
+          <li>Solvencia para aperturas y cartera de personal.</li>
+        </ul>
+        <div class="divider"></div>
+        <h3>Objetivo</h3>
+        <p>Proteger activos, inmuebles, integridad de usuarios e información sensible, alineados a consignas y una relación costo-resultado favorable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARALLAX VISUAL -->
+  <section class="parallax sec" data-parallax data-speed="0.25">
+    <div class="overlay" aria-hidden="true"></div>
+    <div class="wrap" style="position:relative;z-index:1;text-align:center">
+      <h2>Operación con <span class="accent">criterio</span></h2>
+      <p>El diferenciador: entender tu realidad operativa y reaccionar con proactividad para resultados constantes.</p>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAL -->
+  <section id="diferencial">
+    <div class="wrap grid grid-2">
+      <div class="panel">
+        <h2>Misión y Visión</h2>
+        <p><b>Misión:</b> Dar soluciones integrales en materia de seguridad mediante profesionalización y compromisos congruentes con la sociedad.</p>
+        <p><b>Visión:</b> Ser líderes en productividad y rentabilidad con altos estándares en capital humano, tecnología e infraestructura, convirtiéndonos en la alternativa más confiable.</p>
+        <div class="divider"></div>
+        <h3>Valores</h3>
+        <p>Compromiso · Eficacia · Innovación · Servicio · Calidad Humana.</p>
+      </div>
+      <div class="panel">
+        <h2>¿Por qué MSTV?</h2>
+        <ul>
+          <li><b>Criterio Operativo</b> como eje de cada decisión.</li>
+          <li><b>Adaptación</b> y formación permanente del personal.</li>
+          <li><b>Conductas proactivas</b> y estabilidad cliente-proveedor.</li>
+          <li><b>Privacidad</b> y discreción; cartera de clientes bajo autorización.</li>
+        </ul>
+        <div class="divider"></div>
+        <h3>Cobertura</h3>
+        <p>Intramuros para personal físico y moral. Comercial, industrial, residencial y de esparcimiento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPRESA -->
+  <section id="empresa">
+    <div class="wrap grid grid-2">
+      <div class="panel">
+        <h2>La Empresa</h2>
+        <p><b>Razón social:</b> BIENES Y SERVICIOS MSTV, S.A. de C.V.</p>
+        <p><b>Nombre comercial:</b> Mexicana de Seguridad Técnica y Vigilancia (MSTV Seguridad Privada).</p>
+        <p><b>Fundación:</b> 09 de septiembre de 2020.</p>
+        <p><b>Domicilio:</b> Aquiles Serdán 220, Col. Centro, C.P. 37000, León, Guanajuato.</p>
+        <p><b>Teléfonos:</b> 476 127 3832 · 55 4598 6766 · 477 720 7007</p>
+        <p><b>Correos:</b> administracionleon@cobisesp.com · ventas@cobisesp.com · gerencia@cobisesp.com</p>
+      </div>
+      <div class="panel" style="display:grid;place-items:center">
+        <img src="assets/logonuevo.png" alt="Escudo MSTV" style="width:260px;filter:drop-shadow(0 14px 28px rgba(201,162,39,.35))" />
+        <small style="opacity:.7">Identidad dorado/negro con acentos verde/blanco/rojo.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="panel">
+        <h2>Contáctanos</h2>
+        <p>Cuéntanos tu operación y te proponemos un plan de protección a la medida.</p>
+        <form id="contactForm" action="https://example.com/api/contacto" method="POST" novalidate>
+          <input type="text" name="nombre" placeholder="Nombre completo" required />
+          <input type="tel" name="telefono" placeholder="Teléfono" required />
+          <input type="email" name="email" placeholder="Correo electrónico" required />
+          <textarea name="mensaje" placeholder="¿Qué necesitas proteger?" required></textarea>
+          <input type="hidden" name="origen" value="sitio-mstv" />
+          <button class="submit" type="submit">Enviar mensaje</button>
+          <p id="formMsg" role="status" style="margin:8px 2px 0;min-height:22px;font-size:.9rem"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <h3 style="margin-bottom:8px">MSTV Seguridad Privada</h3>
+        <p>Aquiles Serdán 220, Centro, León, Gto. C.P. 37000</p>
+        <p>Tel. 476 127 3832 · 55 4598 6766 · 477 720 7007</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:8px">Aviso</h3>
+        <p>Servicios sujetos a evaluación operativa y disponibilidad. Permisos municipal y estatal vigentes.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Parallax scroll (transform-based, compatible con móviles)
+    const px = document.querySelectorAll('[data-parallax]');
+    const onScroll = () => {
+      const st = window.scrollY || window.pageYOffset;
+      px.forEach(el=>{
+        const speed = parseFloat(el.dataset.speed||0.3);
+        el.style.transform = `translate3d(0, ${st*speed*-0.3}px, 0)`;
+      });
+    };
+    document.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    // Smooth anchors fallback (older iOS)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id.length>1){
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({behavior:'smooth',block:'start'});
+          history.replaceState(null, '', id);
+        }
+      });
+    });
+
+    // Form handling (demo)
+    const form = document.getElementById('contactForm');
+    const msg  = document.getElementById('formMsg');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      msg.textContent = 'Enviando…';
+      try{
+        // Simulación. Cambia action al endpoint real y quita el fetch simulado.
+        await new Promise(r=>setTimeout(r,900));
+        msg.textContent = '¡Listo! Te contactaremos en breve.';
+        form.reset();
+      }catch(err){
+        msg.textContent = 'Hubo un problema. Intenta de nuevo.';
+      }
+    });
+  </script>
+</body>
+</html>
