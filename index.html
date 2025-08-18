@@ -25,7 +25,7 @@
   h1,h2,h3{margin:0 0 10px}
   h1{font-size:clamp(32px,6vw,56px);line-height:1.05;letter-spacing:-.02em}
   h2{font-size:clamp(24px,4.2vw,36px)}
-  p{margin:0 0 10px;color:var(--muted);line-height:1.7}
+  p{margin:0 0 10px;line-height:1.7}
 
   /* NAV */
   .nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.85);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
@@ -42,7 +42,6 @@
   .hero .bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat}
   .hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.70),rgba(255,255,255,.94))}
   .hero .content{position:relative;z-index:2;padding:0 18px;text-align:center}
-  .flag{height:12px;width:34px;border:1px solid rgba(0,0,0,.15);background:linear-gradient(90deg,var(--mx-green) 0 33%,#fff 33% 66%,var(--mx-red) 66%);border-radius:3px;margin-right:8px;display:inline-block;vertical-align:middle}
   .sub{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;box-shadow:var(--shadow);font-size:.9rem;color:#4b5563}
   .actions{display:flex;justify-content:center;gap:10px;margin-top:16px;flex-wrap:wrap}
   .btn{display:inline-block;padding:12px 18px;border-radius:14px;border:1px solid var(--line);background:#fff;font-weight:800}
@@ -50,7 +49,7 @@
   .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
   .kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
   .kpi b{font-size:1.25rem;color:#0f172a}
-  .badge-win{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:14px;box-shadow:var(--shadow);margin-top:12px}
+
 
   /* Section title */
   .section-title{display:flex;align-items:center;gap:10px;margin-bottom:16px}
@@ -126,6 +125,44 @@
   .sticky-cta{position:fixed;left:0;right:0;bottom:12px;z-index:55;display:flex;justify-content:center;pointer-events:none}
   .sticky-cta a{pointer-events:auto;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#231a00;border:1px solid #f0e6bd;padding:12px 18px;border-radius:999px;box-shadow:0 12px 30px rgba(201,162,39,.35);font-weight:800}
   @media(min-width:900px){ .sticky-cta{display:none} }
+
+
+  /* ====== Cards NO clickeables (sin modal) ====== */
+  .card:not([data-modal]) {
+
+    cursor: default;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 10;           /* integra el texto al fondo */
+    margin: 0;            /* por si algún estilo previo añadió margen */
+    transition: none;
+  }
+  .card:not([data-modal]):hover { 
+    transform: none; 
+    box-shadow: none;
+  }
+  .card:not([data-modal])::after { display: none; }  /* quita brillos decorativos */
+
+  /* Modo oscuro (secciones con fondo negro/parallax) */
+  .card.on-dark:not([data-modal]) {
+    background: transparent;
+    border: none;
+    color: #fff!modal;       /* texto legible sobre el fondo oscuro */
+  }
+  .card.on-dark:not([data-modal]) .chip { 
+    background: transparent; 
+    border: none; 
+    color: #cbd5e1;
+  }
+
+  /* Solo las que ABREN modal muestran interacción */
+  .card[data-modal] { cursor: pointer; }
+  .card[data-modal]:hover { 
+    transform: translateY(-3px); 
+    box-shadow: var(--shadow-strong);
+  }
+
 </style>
 </head>
 <body>
@@ -152,19 +189,15 @@
   <div class="bg" data-parallax data-speed="0.22"></div>
   <div class="veil"></div>
   <div class="content">
-    <span class="sub"><span class="flag"></span>Especialistas en fraccionamientos y condominios</span>
+    <span class="sub">Especialistas en fraccionamientos y condominios</span>
     <h1>Seguridad que <span style="background:linear-gradient(135deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent">evita problemas</span> y tranquiliza a tus residentes</h1>
     <p>Control de accesos, rondines y supervisión 24/7 con <b>criterio operativo</b>. Más de <b>2,000 casas atendidas</b> en León y el Bajío.</p>
     <div class="actions">
       <a class="btn gold" href="#contacto">Agenda una evaluación sin costo</a>
       <a class="btn" href="#soluciones">Cómo lo resolvemos</a>
     </div>
-    <div class="badge-win">
-      <img src="assets/logonuevo.png" alt="MSTV" style="width:28px;height:28px;object-fit:contain">
-      <b>+2,000 casas atendidas</b> · <span class="muted">respuesta y reporteo 24/7</span>
-    </div>
     <div class="kpis">
-      <div class="kpi"><b>–40%</b><div class="muted">incidentes en 90 días*</div></div>
+      <div class="kpi"><b>+ 2000</b><div class="muted">Casas atendidas</div></div>
       <div class="kpi"><b>24/7</b><div class="muted">supervisión y escalamiento</div></div>
       <div class="kpi"><b>72 h</b><div class="muted">plan de consignas inicial</div></div>
     </div>
@@ -390,7 +423,9 @@
       <h3>Oficina</h3>
       <p>Aquiles Serdán 220, Centro, León, Gto. C.P. 37000</p>
       <div style="height:220px;border-radius:14px;overflow:hidden;border:1px solid var(--line);margin-top:8px">
-        <img alt="Mapa" src="https://images.unsplash.com/photo-1521292270410-a8c4d716d518?q=80&w=1200&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover">
+        <a href="https://maps.app.goo.gl/bcYvXog5rKMscray7">
+          <img alt="Mapa" src="assets/mapa.png" style="width:100%;height:100%;object-fit:cover">        
+        </a>
       </div>
       <p style="margin-top:10px"><b>Tel.</b> 476 127 3832 · 55 4598 6766 · 477 720 7007<br>
       <b>Correos:</b> administracionleon@cobisesp.com · ventas@cobisesp.com</p>
